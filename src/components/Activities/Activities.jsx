@@ -8,7 +8,7 @@ const Activities = () => {
   return (
     <div className="a-wrapper">
       <div className="text">
-        <span style={{ fontSize: 16, fontWeight: "bold" }}>
+        <span style={{ fontSize: 13, fontWeight: "bold" }}>
           Daily Engagement & Activities
         </span>
         <span style={{ fontSize: 13 }}>September 24, 2024</span>

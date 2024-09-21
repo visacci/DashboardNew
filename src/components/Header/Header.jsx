@@ -3,18 +3,21 @@ import "./Header.scss";
 import { LuSearch } from "react-icons/lu";
 import { FaRegBell } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const title = useSelector((state) => state.selected.value);
+  console.log(title);
   return (
     <div className="header">
       <span
         style={{
-          fontFamily: "Roboto",
+          fontFamily: "Poppins",
           fontSize: "25px",
           fontWeight: "100",
-          color: "GrayText",
+          color: "black",
         }}
       >
-        Dashboard
+        {title}
       </span>
       <div className="inputs">
         <div className="search">

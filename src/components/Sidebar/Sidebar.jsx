@@ -8,8 +8,13 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { MdOutlineRssFeed } from "react-icons/md";
 import { FaRegFlag } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../../Redux/Selected";
 //Sidebar component
 const Sidebar = () => {
+  const [active, setActive] = useState("dashboard");
+  const dispatch = useDispatch();
   return (
     <div className="container">
       <div className="title">
@@ -26,43 +31,145 @@ const Sidebar = () => {
         </span>
       </div>
       <div className="actions">
-        <div className="btns-c">
+        <div
+          className="btns-c"
+          style={{
+            backgroundColor: active === "dashboard" ? "blue" : "",
+          }}
+          onClick={() => {
+            setActive("dashboard");
+            dispatch(setSelected("Dashboard"));
+          }}
+        >
           <div className="btns">
-            <MdOutlineDashboard fontSize={20} color="gray" />
-            <span style={{ color: "gray", marginRight: 60 }}>Dashboard</span>
+            <MdOutlineDashboard
+              fontSize={20}
+              color={active === "dashboard" ? "white" : "gray"}
+            />
+            <span
+              style={{
+                color: active === "dashboard" ? "white" : "gray",
+                marginRight: 40,
+              }}
+            >
+              Dashboard
+            </span>
           </div>
         </div>
-        <div className="btns-c">
-          <div className="btns" style={{ width: "43%" }}>
-            <HiOutlineUserGroup fontSize={20} color="gray" />
-            <span style={{ color: "gray" }}>Users</span>
+        <div
+          className="btns-c"
+          onClick={() => {
+            setActive("users");
+            dispatch(setSelected("Users"));
+          }}
+          style={{
+            backgroundColor: active === "users" ? "blue" : "",
+          }}
+        >
+          <div className="btns" style={{ width: "46%" }}>
+            <HiOutlineUserGroup
+              fontSize={20}
+              color={active === "users" ? "white" : "gray"}
+            />
+            <span
+              style={{
+                color: active === "users" ? "white" : "gray",
+                alignSelf: "center",
+              }}
+            >
+              Users
+            </span>
           </div>
-          <IoIosArrowForward />
+          <IoIosArrowForward color={active === "users" ? "white" : "gray"} />
         </div>
-        <div className="btns-c">
-          <div className="btns" style={{ width: "65%" }}>
-            <HiOutlineUserGroup fontSize={20} color="gray" />
-            <span style={{ color: "gray" }}>Companies</span>
+        <div
+          className="btns-c"
+          style={{
+            backgroundColor: active === "companies" ? "blue" : "",
+          }}
+          onClick={() => {
+            setActive("companies");
+            dispatch(setSelected("Companies"));
+          }}
+        >
+          <div className="btns" style={{ width: "75%" }}>
+            <HiOutlineUserGroup
+              fontSize={20}
+              color={active === "companies" ? "white" : "gray"}
+            />
+            <span style={{ color: active === "companies" ? "white" : "gray" }}>
+              Companies
+            </span>
           </div>
-          <IoIosArrowForward />
+          <IoIosArrowForward
+            color={active === "companies" ? "white" : "gray"}
+          />
         </div>
-        <div className="btns-c">
-          <div className="btns" style={{ width: "43%" }}>
-            <MdOutlineRssFeed fontSize={20} color="gray" />
-            <span style={{ color: "gray" }}>Posts</span>
+        <div
+          className="btns-c"
+          onClick={() => {
+            setActive("posts");
+            dispatch(setSelected("Posts"));
+          }}
+          style={{
+            backgroundColor: active === "posts" ? "blue" : "",
+          }}
+        >
+          <div className="btns" style={{ width: "46%" }}>
+            <MdOutlineRssFeed
+              fontSize={20}
+              color={active === "posts" ? "white" : "gray"}
+            />
+            <span style={{ color: active === "posts" ? "white" : "gray" }}>
+              Posts
+            </span>
           </div>
-          <IoIosArrowForward />
+          <IoIosArrowForward color={active === "posts" ? "white" : "gray"} />
         </div>
-        <div className="btns-c">
-          <div className="btns" style={{ width: "100%" }}>
-            <FaRegFlag fontSize={20} color="gray" />
-            <span style={{ color: "gray" }}>Content Moderation</span>
+        <div
+          className="btns-c"
+          style={{
+            backgroundColor: active === "content" ? "blue" : "",
+            paddingRight: 0,
+          }}
+          onClick={() => {
+            setActive("content");
+            dispatch(setSelected("Content Moderation"));
+          }}
+        >
+          <div
+            className="btns"
+            style={{
+              width: "100%",
+            }}
+          >
+            <FaRegFlag
+              fontSize={20}
+              color={active === "content" ? "white" : "gray"}
+            />
+            <span style={{ color: active === "content" ? "white" : "gray" }}>
+              Content Moderation
+            </span>
           </div>
         </div>
-        <div className="btns-c">
-          <div className="btns" style={{ width: "53%" }}>
-            <IoSettingsOutline fontSize={20} color="gray" />
-            <span style={{ color: "gray" }}>Settings</span>
+        <div
+          className="btns-c"
+          style={{
+            backgroundColor: active === "settings" ? "blue" : "",
+          }}
+          onClick={() => {
+            setActive("settings");
+            dispatch(setSelected("Settings"));
+          }}
+        >
+          <div className="btns" style={{ width: "60%" }}>
+            <IoSettingsOutline
+              fontSize={20}
+              color={active === "settings" ? "white" : "gray"}
+            />
+            <span style={{ color: active === "settings" ? "white" : "gray" }}>
+              Settings
+            </span>
           </div>
         </div>
       </div>
