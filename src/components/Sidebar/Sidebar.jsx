@@ -11,10 +11,12 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSelected } from "../../../Redux/Selected";
+import { useNavigate } from "react-router-dom";
 //Sidebar component
 const Sidebar = () => {
   const [active, setActive] = useState("dashboard");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="container">
       <div className="title">
@@ -39,6 +41,7 @@ const Sidebar = () => {
           onClick={() => {
             setActive("dashboard");
             dispatch(setSelected("Dashboard"));
+            navigate("/");
           }}
         >
           <div className="btns">
@@ -160,6 +163,7 @@ const Sidebar = () => {
           onClick={() => {
             setActive("settings");
             dispatch(setSelected("Settings"));
+            navigate("/settings");
           }}
         >
           <div className="btns" style={{ width: "60%" }}>

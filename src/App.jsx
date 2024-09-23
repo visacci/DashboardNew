@@ -6,6 +6,8 @@ import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import Home from "./Pages/Home/Home";
+import Settings from "./Pages/Settings/Settings";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,10 +15,13 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <Sidebar />
-        <Header />
+        {/* <Sidebar />
+        <Header /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Routes>
       </Router>
     </div>
